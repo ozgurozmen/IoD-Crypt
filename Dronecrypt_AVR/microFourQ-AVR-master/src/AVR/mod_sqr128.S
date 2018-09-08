@@ -1,0 +1,1152 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+// Multi-Precision Modular Squaring: c = a^2 (mod 2^127-1);                                         //
+// Adopts the Sliding Block Doubling (SBD) method from                                              //
+// 'Multi-precision Squaring for Public-Key Cryptography on Embedded Microprocessors', INDOCRYPT'13 //   
+// Authors: Zhe Liu, Hwajeong Seo                                                                   //
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+﻿
+NAME mod_sqr128            ; module name
+PUBLIC mod_sqr128          ; make the main label vissible outside this module
+RSEG CODE                  ; place program in 'CODE' segment
+
+#define OP0 R2
+#define OP1 R3
+#define OP2 R4
+#define OP3 R5
+
+#define OP4 R6
+#define OP5 R7
+#define OP6 R8
+#define OP7 R9
+
+#define OP8 R10
+#define OP9 R11
+#define OP10 R12
+#define OP11 R13
+
+#define OP12 R14
+#define OP13 R15
+#define OP14 R16
+#define OP15 R17
+
+#define A0 R13
+#define A1 R14
+#define A2 R15
+#define A3 R16
+
+#define A4 R17
+#define A5 R18
+#define A6 R19
+#define A7 R20
+
+#define A8 R21
+#define A9 R22
+#define A10 R23
+#define A11 R24	
+
+#define A12 R25 
+
+
+//SECOND
+#define B0 R18
+#define B1 R19
+#define B2 R20
+#define B3 R21
+#define B4 R22
+#define B5 R23			
+#define B6 R30	
+#define B7 R31	
+#define B8 R2	//OP0
+#define B9 R3	//OP1	
+#define B10 R4	//OP2	
+
+
+//THIRD
+#define C0 R18
+#define C1 R19
+#define C2 R20
+#define C3 R21
+
+#define C4 R22
+#define C5 R23
+#define C6 R24
+#define C7 R25
+
+#define C8 R26
+#define C9 R27
+#define C10 R30
+#define C11 R31
+
+#define TMP0 R28
+#define ZERO R29
+
+//RED
+
+#define L0 R0
+#define L1 R1
+#define L2 R2
+#define L3 R3
+
+#define L4 R4
+#define L5 R5
+#define L6 R6
+#define L7 R7
+
+#define L8 R8
+#define L9 R9
+#define L10 R10
+#define L11 R11
+
+#define L12 R12
+#define L13 R13
+#define L14 R14
+#define L15 R29
+
+
+#define L16 R16
+#define L17 R17
+#define L18 R28
+#define L19 R15
+
+#define L20 R18
+#define L21 R19
+#define L22 R20
+#define L23 R21
+
+#define L24 R22
+#define L25 R23
+#define L26 R24
+#define L27 R25
+
+#define L28 R26
+#define L29 R27
+#define L30 R30
+#define L31 R31
+
+#define L_TMP R0
+
+
+mod_sqr128:
+
+  PUSH R4
+  PUSH R5
+  PUSH R6
+  PUSH R7
+  PUSH R8
+  PUSH R9
+  PUSH R10
+  PUSH R11
+  PUSH R12
+  PUSH R13
+  PUSH R14
+  PUSH R15
+  
+  PUSH R24
+  PUSH R25
+  PUSH R26
+  PUSH R27
+  PUSH R28
+  PUSH R29
+
+
+  PUSH R18	//RESULT
+  PUSH R19
+  MOVW R30, R16	//operand
+  CLR ZERO
+
+  LDD OP0, Z+0
+  LDD OP1, Z+1
+  LDD OP2, Z+2
+  LDD OP3, Z+3
+
+  LDD OP4, Z+4
+  LDD OP5, Z+5
+  LDD OP6, Z+6
+  LDD OP7, Z+7
+
+  LDD OP8, Z+8
+  LDD OP9, Z+9
+  LDD OP10, Z+10
+
+  //COL#1-3
+  MUL OP0, OP1
+  MOVW A1, R0
+
+  MUL OP1, OP2
+  MOVW A3, R0
+
+  MUL OP0, OP2
+  ADD A2, R0
+  ADC A3, R1
+  ADC A4, ZERO
+
+  CLR A5
+  MUL OP0, OP3
+  ADD A3, R0
+  ADC A4, R1
+  ADC A5, ZERO
+
+  //COL#4
+  CLR A6
+  MUL OP0, OP4
+  ADD A4, R0
+  ADC A5, R1
+  ADC A6, ZERO
+
+  MUL OP1, OP3
+  ADD A4, R0
+  ADC A5, R1
+  ADC A6, ZERO
+
+  //COL#5
+  CLR A7
+  MUL OP0, OP5
+  ADD A5, R0
+  ADC A6, R1
+  ADC A7, ZERO
+
+  MUL OP1, OP4
+  ADD A5, R0
+  ADC A6, R1
+  ADC A7, ZERO
+
+  MUL OP2, OP3
+  ADD A5, R0
+  ADC A6, R1
+  ADC A7, ZERO
+
+  //COL#6
+  CLR A8
+  MUL OP0, OP6
+  ADD A6, R0
+  ADC A7, R1
+  ADC A8, ZERO
+
+  MUL OP1, OP5
+  ADD A6, R0
+  ADC A7, R1
+  ADC A8, ZERO
+
+  MUL OP2, OP4
+  ADD A6, R0
+  ADC A7, R1
+  ADC A8, ZERO
+
+  //COL#7
+  CLR A9
+  MUL OP0, OP7
+  ADD A7, R0
+  ADC A8, R1
+  ADC A9, ZERO
+
+  MUL OP1, OP6
+  ADD A7, R0
+  ADC A8, R1
+  ADC A9, ZERO
+
+  MUL OP2, OP5
+  ADD A7, R0
+  ADC A8, R1
+  ADC A9, ZERO
+
+  MUL OP3, OP4
+  ADD A7, R0
+  ADC A8, R1
+  ADC A9, ZERO
+
+  //COL#8
+  CLR A10
+  MUL OP0, OP8
+  ADD A8, R0
+  ADC A9, R1
+  ADC A10, ZERO
+
+  MUL OP1, OP7
+  ADD A8, R0
+  ADC A9, R1
+  ADC A10, ZERO
+
+  MUL OP2, OP6
+  ADD A8, R0
+  ADC A9, R1
+  ADC A10, ZERO
+
+  MUL OP3, OP5
+  ADD A8, R0
+  ADC A9, R1
+  ADC A10, ZERO
+
+  //COL#9
+  CLR A11
+  MUL OP0, OP9
+  ADD A9, R0
+  ADC A10, R1
+  ADC A11, ZERO
+
+  MUL OP1, OP8
+  ADD A9, R0
+  ADC A10, R1
+  ADC A11, ZERO
+
+  MUL OP2, OP7
+  ADD A9, R0
+  ADC A10, R1
+  ADC A11, ZERO
+
+  MUL OP3, OP6
+  ADD A9, R0
+  ADC A10, R1
+  ADC A11, ZERO
+
+  MUL OP4, OP5
+  ADD A9, R0
+  ADC A10, R1
+  ADC A11, ZERO
+
+  //COL#10
+  CLR A12
+  MUL OP0, OP10
+  ADD A10, R0
+  ADC A11, R1
+  ADC A12, ZERO
+
+  MUL OP1, OP9
+  ADD A10, R0
+  ADC A11, R1
+  ADC A12, ZERO
+
+  MUL OP2, OP8
+  ADD A10, R0
+  ADC A11, R1
+  ADC A12, ZERO
+
+  MUL OP3, OP7
+  ADD A10, R0
+  ADC A11, R1
+  ADC A12, ZERO
+
+  MUL OP4, OP6
+  ADD A10, R0
+  ADC A11, R1
+  ADC A12, ZERO
+
+  //DOUBLING
+  ADD A1, A1
+  ADC A2, A2
+  ADC A3, A3
+
+  ADC A4, A4
+  ADC A5, A5
+  ADC A6, A6
+  ADC A7, A7
+
+  ADC A8, A8
+  ADC A9, A9
+  ADC A10, A10
+  ADC A11, A11
+
+  ADC A12, A12
+
+  //REMAINING
+  CLR TMP0
+
+  MUL OP0, OP0
+  MOVW R26, R0
+
+  MUL OP1, OP1
+
+  ADD A1, R27
+  ADC A2, R0
+  ADC A3, R1
+  ADC TMP0, TMP0
+
+  PUSH R26
+  PUSH A1
+  PUSH A2
+  PUSH A3
+
+  MUL OP2, OP2
+  MOVW R26, R0
+
+  MUL OP3, OP3
+  MOVW A1, R0
+
+  MUL OP4, OP4
+  MOV A0, R0
+  MOV A3, R1
+
+  MUL OP5, OP5
+
+  LSR TMP0
+  ADC A4, R26
+  ADC A5, R27
+  ADC A6, A1
+  ADC A7, A2
+  ADC A8, A0
+  ADC A9, A3
+  ADC A10, R0
+  ADC A11, R1
+  ADC A12, TMP0
+
+  PUSH A4
+  PUSH A5
+  PUSH A6
+  PUSH A7
+
+  PUSH A8
+  PUSH A9
+  PUSH A10
+
+
+  //SECOND ROUND
+  LDD OP11, Z+11
+  LDD OP12, Z+12
+  LDD OP13, Z+13
+  LDD OP14, Z+14
+
+  LDD OP15, Z+15
+
+  //COL#11
+  CLR B2
+  MUL OP0, OP11
+  MOVW B0, R0
+
+  MUL OP1, OP10
+  ADD B0, R0
+  ADC B1, R1
+  ADC B2, ZERO
+
+  MUL OP2, OP9
+  ADD B0, R0
+  ADC B1, R1
+  ADC B2, ZERO
+
+  MUL OP3, OP8
+  ADD B0, R0
+  ADC B1, R1
+  ADC B2, ZERO
+
+  MUL OP4, OP7
+  ADD B0, R0
+  ADC B1, R1
+  ADC B2, ZERO
+
+  MUL OP5, OP6
+  ADD B0, R0
+  ADC B1, R1
+  ADC B2, ZERO
+
+  //COL#12
+  CLR B3
+  MUL OP0, OP12
+  ADD B1, R0
+  ADC B2, R1
+  ADC B3, ZERO
+  
+  MUL OP1, OP11
+  ADD B1, R0
+  ADC B2, R1
+  ADC B3, ZERO
+
+  MUL OP2, OP10
+  ADD B1, R0
+  ADC B2, R1
+  ADC B3, ZERO
+
+  MUL OP3, OP9
+  ADD B1, R0
+  ADC B2, R1
+  ADC B3, ZERO
+
+  MUL OP4, OP8
+  ADD B1, R0
+  ADC B2, R1
+  ADC B3, ZERO
+
+  MUL OP5, OP7
+  ADD B1, R0
+  ADC B2, R1
+  ADC B3, ZERO
+
+  //COL#13
+  CLR B4
+  MUL OP0, OP13
+  ADD B2, R0
+  ADC B3, R1
+  ADC B4, ZERO
+
+  MUL OP1, OP12
+  ADD B2, R0
+  ADC B3, R1
+  ADC B4, ZERO
+
+  MUL OP2, OP11
+  ADD B2, R0
+  ADC B3, R1
+  ADC B4, ZERO
+
+  MUL OP3, OP10
+  ADD B2, R0
+  ADC B3, R1
+  ADC B4, ZERO
+
+  MUL OP4, OP9
+  ADD B2, R0
+  ADC B3, R1
+  ADC B4, ZERO
+
+  MUL OP5, OP8
+  ADD B2, R0
+  ADC B3, R1
+  ADC B4, ZERO
+
+  MUL OP6, OP7
+  ADD B2, R0
+  ADC B3, R1
+  ADC B4, ZERO
+
+  //COL#14
+  CLR B5
+  MUL OP0, OP14
+  ADD B3, R0
+  ADC B4, R1
+  ADC B5, ZERO
+
+  MUL OP1, OP13
+  ADD B3, R0
+  ADC B4, R1
+  ADC B5, ZERO
+
+  MUL OP2, OP12
+  ADD B3, R0
+  ADC B4, R1
+  ADC B5, ZERO
+
+  MUL OP3, OP11
+  ADD B3, R0
+  ADC B4, R1
+  ADC B5, ZERO
+
+  MUL OP4, OP10
+  ADD B3, R0
+  ADC B4, R1
+  ADC B5, ZERO
+
+  MUL OP5, OP9
+  ADD B3, R0
+  ADC B4, R1
+  ADC B5, ZERO
+
+  MUL OP6, OP8
+  ADD B3, R0
+  ADC B4, R1
+  ADC B5, ZERO
+
+  //COL#15
+  CLR B6		
+  MUL OP0, OP15  
+  ADD B4, R0
+  ADC B5, R1
+  ADC B6, ZERO
+
+  MUL OP1, OP14
+  ADD B4, R0
+  ADC B5, R1
+  ADC B6, ZERO
+
+  MUL OP2, OP13
+  ADD B4, R0
+  ADC B5, R1
+  ADC B6, ZERO
+
+  MUL OP3, OP12
+  ADD B4, R0
+  ADC B5, R1
+  ADC B6, ZERO
+
+  MUL OP4, OP11
+  ADD B4, R0
+  ADC B5, R1
+  ADC B6, ZERO
+
+  MUL OP5, OP10
+  ADD B4, R0
+  ADC B5, R1
+  ADC B6, ZERO
+
+  MUL OP6, OP9
+  ADD B4, R0
+  ADC B5, R1
+  ADC B6, ZERO
+
+  MUL OP7, OP8
+  ADD B4, R0
+  ADC B5, R1
+  ADC B6, ZERO
+
+  //COL#16
+  CLR B7
+  MUL OP1, OP15
+  ADD B5, R0
+  ADC B6, R1
+  ADC B7, ZERO
+
+  MUL OP2, OP14
+  ADD B5, R0
+  ADC B6, R1
+  ADC B7, ZERO
+
+  MUL OP3, OP13
+  ADD B5, R0
+  ADC B6, R1
+  ADC B7, ZERO
+
+  MUL OP4, OP12
+  ADD B5, R0
+  ADC B6, R1
+  ADC B7, ZERO
+
+  MUL OP5, OP11
+  ADD B5, R0
+  ADC B6, R1
+  ADC B7, ZERO
+
+  MUL OP6, OP10
+  ADD B5, R0
+  ADC B6, R1
+  ADC B7, ZERO
+
+  MUL OP7, OP9
+  ADD B5, R0
+  ADC B6, R1
+  ADC B7, ZERO
+
+  //COL#17
+  CLR B8
+  MUL OP2, OP15
+  ADD B6, R0
+  ADC B7, R1
+  ADC B8, ZERO
+
+  MUL OP3, OP14
+  ADD B6, R0
+  ADC B7, R1
+  ADC B8, ZERO
+
+  MUL OP4, OP13
+  ADD B6, R0
+  ADC B7, R1
+  ADC B8, ZERO
+
+  MUL OP5, OP12
+  ADD B6, R0
+  ADC B7, R1
+  ADC B8, ZERO
+
+  MUL OP6, OP11
+  ADD B6, R0
+  ADC B7, R1
+  ADC B8, ZERO
+   
+  MUL OP7, OP10
+  ADD B6, R0
+  ADC B7, R1
+  ADC B8, ZERO
+
+  MUL OP8, OP9
+  ADD B6, R0
+  ADC B7, R1
+  ADC B8, ZERO
+
+  //COL#18
+  CLR B9
+  MUL OP3, OP15
+  ADD B7, R0
+  ADC B8, R1
+  ADC B9, ZERO
+
+  MUL OP4, OP14
+  ADD B7, R0
+  ADC B8, R1
+  ADC B9, ZERO
+
+  MUL OP5, OP13
+  ADD B7, R0
+  ADC B8, R1
+  ADC B9, ZERO
+
+  MUL OP6, OP12
+  ADD B7, R0
+  ADC B8, R1
+  ADC B9, ZERO
+
+  MUL OP7, OP11
+  ADD B7, R0
+  ADC B8, R1
+  ADC B9, ZERO
+
+  MUL OP8, OP10
+  ADD B7, R0
+  ADC B8, R1
+  ADC B9, ZERO
+
+  //COL#19
+  CLR B10
+  MUL OP4, OP15
+  ADD B8, R0
+  ADC B9, R1
+  ADC B10, ZERO
+
+  MUL OP5, OP14
+  ADD B8, R0
+  ADC B9, R1
+  ADC B10, ZERO
+
+  MUL OP6, OP13
+  ADD B8, R0
+  ADC B9, R1
+  ADC B10, ZERO
+
+  MUL OP7, OP12
+  ADD B8, R0
+  ADC B9, R1
+  ADC B10, ZERO
+
+  MUL OP8, OP11
+  ADD B8, R0
+  ADC B9, R1
+  ADC B10, ZERO
+
+  MUL OP9, OP10
+  ADD B8, R0
+  ADC B9, R1
+  ADC B10, ZERO
+
+  //DOUBLING
+  ADD B0, B0
+  ADC B1, B1
+  ADC B2, B2
+  ADC B3, B3
+  ADC B4, B4
+  ADC B5, B5
+  ADC B6, B6
+  ADC B7, B7
+  ADC B8, B8
+  ADC B9, B9
+  ADC B10, B10
+
+
+  //REMAINING
+
+  MUL OP6, OP6
+  MOVW R26, R0
+
+  MUL OP7, OP7
+
+  ADD R26, A12
+  ADC R27, ZERO
+  ADC R0, ZERO
+  ADC R1, ZERO
+
+  ADD B0, A11
+  ADC B1, R26
+  ADC B2, R27
+  ADC B3, R0
+  ADC B4, R1
+  ADC TMP0, TMP0
+
+  MUL OP8, OP8
+  MOVW R26, R0
+
+  MUL OP9, OP9
+
+
+  LSR TMP0
+  ADC B5, R26
+  ADC B6, R27
+  ADC B7, R0
+  ADC B8, R1
+  ADC B9, ZERO
+  ADC B10, ZERO
+
+
+  PUSH B0
+  PUSH B1
+  PUSH B2
+  PUSH B3
+  PUSH B4
+  PUSH B5
+  PUSH B6
+  PUSH B7
+  PUSH B8
+
+
+  //COL#20
+  CLR C2
+  MUL OP5, OP15
+  MOVW C0, R0
+
+  MUL OP6, OP14  
+  ADD C0, R0
+  ADC C1, R1
+  ADC C2, ZERO
+
+  MUL OP7, OP13  
+  ADD C0, R0
+  ADC C1, R1
+  ADC C2, ZERO
+
+  MUL OP8, OP12  
+  ADD C0, R0
+  ADC C1, R1
+  ADC C2, ZERO
+
+  MUL OP9, OP11  
+  ADD C0, R0
+  ADC C1, R1
+  ADC C2, ZERO
+
+  //COL#21
+  CLR C3
+  MUL OP6, OP15
+  ADD C1, R0
+  ADC C2, R1
+  ADC C3, ZERO
+
+  MUL OP7, OP14
+  ADD C1, R0
+  ADC C2, R1
+  ADC C3, ZERO
+
+  MUL OP8, OP13
+  ADD C1, R0
+  ADC C2, R1
+  ADC C3, ZERO
+
+  MUL OP9, OP12
+  ADD C1, R0
+  ADC C2, R1
+  ADC C3, ZERO
+
+  MUL OP10, OP11
+  ADD C1, R0
+  ADC C2, R1
+  ADC C3, ZERO
+
+  //COL#22
+  CLR C4
+  MUL OP7, OP15
+  ADD C2, R0
+  ADC C3, R1
+  ADC C4, ZERO
+
+  MUL OP8, OP14
+  ADD C2, R0
+  ADC C3, R1
+  ADC C4, ZERO
+
+  MUL OP9, OP13
+  ADD C2, R0
+  ADC C3, R1
+  ADC C4, ZERO
+
+  MUL OP10, OP12
+  ADD C2, R0
+  ADC C3, R1
+  ADC C4, ZERO
+
+  //COL#23
+  CLR C5
+  MUL OP8, OP15
+  ADD C3, R0
+  ADC C4, R1
+  ADC C5, ZERO
+
+  MUL OP9, OP14
+  ADD C3, R0
+  ADC C4, R1
+  ADC C5, ZERO
+
+  MUL OP10, OP13
+  ADD C3, R0
+  ADC C4, R1
+  ADC C5, ZERO
+
+  MUL OP11, OP12
+  ADD C3, R0
+  ADC C4, R1
+  ADC C5, ZERO
+
+  //COL#24
+  CLR C6
+  MUL OP9, OP15
+  ADD C4, R0
+  ADC C5, R1
+  ADC C6, ZERO
+
+  MUL OP10, OP14
+  ADD C4, R0
+  ADC C5, R1
+  ADC C6, ZERO
+
+  MUL OP11, OP13
+  ADD C4, R0
+  ADC C5, R1
+  ADC C6, ZERO
+
+  //COL#25
+  CLR C7
+  MUL OP10, OP15
+  ADD C5, R0
+  ADC C6, R1
+  ADC C7, ZERO
+
+  MUL OP11, OP14
+  ADD C5, R0
+  ADC C6, R1
+  ADC C7, ZERO
+
+  MUL OP12, OP13
+  ADD C5, R0
+  ADC C6, R1
+  ADC C7, ZERO
+
+  //COL#26
+  CLR C8
+  MUL OP11, OP15
+  ADD C6, R0
+  ADC C7, R1
+  ADC C8, ZERO
+
+  MUL OP12, OP14
+  ADD C6, R0
+  ADC C7, R1
+  ADC C8, ZERO
+
+  //COL#27
+  CLR C9
+  MUL OP12, OP15
+  ADD C7, R0
+  ADC C8, R1
+  ADC C9, ZERO
+
+  MUL OP13, OP14
+  ADD C7, R0
+  ADC C8, R1
+  ADC C9, ZERO
+
+  //COL#28
+  CLR C10
+  MUL OP13, OP15
+  ADD C8, R0
+  ADC C9, R1
+  ADC C10, ZERO
+
+  //COL#29
+  CLR C11
+  MUL OP14, OP15
+  ADD C9, R0
+  ADC C10, R1
+
+  //DOUBLING
+  ADD C0, C0
+  ADC C1, C1
+  ADC C2, C2
+  ADC C3, C3
+  ADC C4, C4
+  ADC C5, C5
+  ADC C6, C6
+  ADC C7, C7
+  ADC C8, C8
+  ADC C9, C9
+  ADC C10, C10
+  ADC C11, C11
+
+  //REMAINING
+  
+  //OP4 TEMP
+
+  MUL OP10, OP10
+  MOVW OP4, R0
+
+  MUL OP11, OP11
+  MOVW OP6, R0
+
+  MUL OP12, OP12
+  MOVW OP8, R0
+
+  MUL OP13, OP13
+  MOVW OP10, R0
+
+  MUL OP14, OP14
+  MOVW OP12, R0
+
+  MUL OP15, OP15
+  
+  ADD OP4,B9
+  ADC OP5, B10
+  ADC OP6, ZERO
+  ADC OP7, ZERO
+
+  ADD C0, OP4
+  ADC C1, OP5
+  ADC C2, OP6
+  ADC C3, OP7
+  ADC C4, OP8
+  ADC C5, OP9
+  ADC C6, OP10
+  ADC C7, OP11
+  ADC C8, OP12
+  ADC C9, OP13
+  ADC C10, R0
+  ADC C11, R1
+
+  //20 SAVED
+  //12
+
+  POP L19
+  POP L18
+  POP L17
+  POP L16
+  POP L15
+
+  MOV L_TMP, L15
+  ANDI L15, 0X7F
+
+  ADD L_TMP, L_TMP
+  ADC L16, L16
+  ADC L17, L17
+  ADC L18, L18
+  ADC L19, L19
+
+  ADC L20, L20
+  ADC L21, L21
+  ADC L22, L22
+  ADC L23, L23
+
+  ADC L24, L24
+  ADC L25, L25
+  ADC L26, L26
+  ADC L27, L27
+
+  ADC L28, L28
+  ADC L29, L29
+  ADC L30, L30
+  ADC L31, L31
+
+
+  POP L14
+  POP L13
+  POP L12
+  POP L11
+  
+  POP L10
+  POP L9
+  POP L8
+  POP L7
+
+  POP L6
+  POP L5
+  POP L4
+  POP L3
+
+  POP L2
+  POP L1
+  POP L0
+
+  ADD L0, L16
+  ADC L1, L17
+  ADC L2, L18
+  ADC L3, L19
+
+  ADC L4, L20
+  ADC L5, L21
+  ADC L6, L22
+  ADC L7, L23
+
+  ADC L8, L24
+  ADC L9, L25
+  ADC L10, L26
+  ADC L11, L27
+
+  ADC L12, L28
+  ADC L13, L29
+  ADC L14, L30
+  ADC L15, L31
+
+
+  MOV L31, L15
+  ANDI L15, 0X7F
+  CLR L30
+
+  ADD L31, L31
+  ADC L0, L30
+  ADC L1, L30
+  ADC L2, L30
+  ADC L3, L30
+
+  ADC L4, L30
+  ADC L5, L30
+  ADC L6, L30
+  ADC L7, L30
+
+  ADC L8, L30
+  ADC L9, L30
+  ADC L10, L30
+  ADC L11, L30
+
+  ADC L12, L30
+  ADC L13, L30
+  ADC L14, L30
+  ADC L15, L30
+
+
+  POP R31	//RESULT
+  POP R30	//RESULT
+
+
+  ST Z+, L0
+  ST Z+, L1
+  ST Z+, L2
+  ST Z+, L3
+
+  ST Z+, L4
+  ST Z+, L5
+  ST Z+, L6
+  ST Z+, L7
+
+  ST Z+, L8
+  ST Z+, L9
+  ST Z+, L10
+  ST Z+, L11
+
+  ST Z+, L12
+  ST Z+, L13
+  ST Z+, L14
+  ST Z+, L15
+
+  ; restore X and Y register
+  POP R29
+  POP R28
+  POP R27
+  POP R26
+  POP R25
+  POP R24
+      
+  POP R15
+  POP R14
+  POP R13
+  POP R12
+  POP R11
+  POP R10
+  POP R9
+  POP R8
+  POP R7
+  POP R6
+  POP R5
+  POP R4
+
+  RET
+  
+END
+; ===================================================================

@@ -1,0 +1,680 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <fileVersion>2</fileVersion>
+    <fileChecksum>1452045558</fileChecksum>
+    <configuration>
+        <name>Debug</name>
+        <outputs>
+            <file>$PROJ_DIR$\Debug\Obj\Dronecrypt.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\Dronecrypt.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\fp_tests.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\schnorrq.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\mod_sqr128.r90</file>
+            <file>$PROJ_DIR$\Debug\Obj\test_extras.__cstat.et</file>
+            <file>$TOOLKIT_DIR$\inc\clib\stdarg.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\mp_sub.r90</file>
+            <file>$PROJ_DIR$\Debug\Obj\mod_mul128.r90</file>
+            <file>$PROJ_DIR$\Debug\List\eccp2.lst</file>
+            <file>$PROJ_DIR$\Debug\List\microFourQ_AVR.html</file>
+            <file>$PROJ_DIR$\Debug\Obj\fp_tests.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\blake.r90</file>
+            <file>$PROJ_DIR$\Debug\Obj\blake.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\crypto_util.r90</file>
+            <file>$TOOLKIT_DIR$\inc\clib\stdio.h</file>
+            <file>$TOOLKIT_DIR$\inc\clib\sysmac.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\ecc_tests.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\eccp2.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\eccp2_no_endo.r90</file>
+            <file>$PROJ_DIR$\Debug\Obj\test_extras.r90</file>
+            <file>$PROJ_DIR$\Debug\Obj\random.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\crypto_util.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\kex.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\main.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\microFourQ_AVR.pbd</file>
+            <file>$PROJ_DIR$\Debug\Obj\dronecrypt_tests.r90</file>
+            <file>$PROJ_DIR$\Debug\Obj\dronecrypt_tests.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\Dronecrypt.r90</file>
+            <file>$PROJ_DIR$\Debug\Obj\eccp2.__cstat.et</file>
+            <file>$TOOLKIT_DIR$\inc\clib\limits.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\mod1271.r90</file>
+            <file>$PROJ_DIR$\Debug\Obj\eccp2.r90</file>
+            <file>$PROJ_DIR$\..\src\tests\test_extras.c</file>
+            <file>$PROJ_DIR$\..\src\Dronecrypt.h</file>
+            <file>$PROJ_DIR$\..\src\blake2b\sph_types.h</file>
+            <file>$PROJ_DIR$\..\src\AVR\mod_mul_dbl128.S</file>
+            <file>$PROJ_DIR$\..\src\FourQ.h</file>
+            <file>$PROJ_DIR$\..\src\FourQ_api.h</file>
+            <file>$PROJ_DIR$\..\src\AVR\fpzero1271.s</file>
+            <file>$PROJ_DIR$\..\src\tests\crypto_tests.c</file>
+            <file>$PROJ_DIR$\..\src\crypto_util.c</file>
+            <file>$PROJ_DIR$\..\src\AVR\mp_add.s</file>
+            <file>$PROJ_DIR$\..\src\AVR\mp_sub.s</file>
+            <file>$PROJ_DIR$\..\src\random\random.c</file>
+            <file>$PROJ_DIR$\..\src\random\random.h</file>
+            <file>$PROJ_DIR$\..\src\tests\ecc_tests.c</file>
+            <file>$PROJ_DIR$\..\src\eccp2.c</file>
+            <file>$PROJ_DIR$\..\src\tests\test_extras.h</file>
+            <file>$PROJ_DIR$\..\src\AVR\mod_mul128.S</file>
+            <file>$PROJ_DIR$\..\src\tests\fp_tests.c</file>
+            <file>$PROJ_DIR$\..\src\eccp2_no_endo.c</file>
+            <file>$PROJ_DIR$\..\src\FourQ_params.h</file>
+            <file>$PROJ_DIR$\..\src\blake2b\blake.c</file>
+            <file>$PROJ_DIR$\..\src\blake2b\blake.h</file>
+            <file>$PROJ_DIR$\..\src\Dronecrypt.c</file>
+            <file>$PROJ_DIR$\..\src\AVR\mul32.S</file>
+            <file>$PROJ_DIR$\..\src\FourQ_internal.h</file>
+            <file>$PROJ_DIR$\..\src\AVR\mod1271.s</file>
+            <file>$PROJ_DIR$\..\src\AVR\mul256.S</file>
+            <file>$PROJ_DIR$\..\src\AVR\mod_sqr128.S</file>
+            <file>$PROJ_DIR$\..\src\AVR\mul64.S</file>
+            <file>$PROJ_DIR$\..\src\blake2b\sph_blake.h</file>
+            <file>$PROJ_DIR$\..\src\tests\dronecrypt_tests.c</file>
+            <file>$PROJ_DIR$\Debug\Obj\crypto_util.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\schnorrq.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\mul32.r90</file>
+            <file>$PROJ_DIR$\..\src\table_lookup.h</file>
+            <file>$PROJ_DIR$\..\src\kex.c</file>
+            <file>$PROJ_DIR$\..\src\IAR_stdint.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\dronecrypt_tests.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\List\eccp2.s90</file>
+            <file>$TOOLKIT_DIR$\inc\clib\stdlib.h</file>
+            <file>$PROJ_DIR$\..\src\schnorrq.c</file>
+            <file>$PROJ_DIR$\Debug\Obj\fpsub1271.r90</file>
+            <file>$PROJ_DIR$\Debug\Obj\fpcopy1271.r90</file>
+            <file>$PROJ_DIR$\..\src\FourQ_tables.h</file>
+            <file>$PROJ_DIR$\..\src\main.c</file>
+            <file>$PROJ_DIR$\Debug\Exe\microFourQ_AVR.d90</file>
+            <file>$PROJ_DIR$\Debug\Obj\crypto_tests.pbi</file>
+            <file>$TOOLKIT_DIR$\src\template\cfgm2560.xcl</file>
+            <file>$TOOLKIT_DIR$\src\template\cfg5soim.xcl</file>
+            <file>$TOOLKIT_DIR$\lib\clib\cl5s-ec_mul.r90</file>
+            <file>$PROJ_DIR$\Debug\Obj\main.r90</file>
+            <file>$PROJ_DIR$\Debug\Obj\test_extras.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\blake.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\fp_tests.r90</file>
+            <file>$PROJ_DIR$\Debug\Obj\random.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\kex.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\mp_add.r90</file>
+            <file>$TOOLKIT_DIR$\inc\clib\pgmspace.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\eccp2_no_endo.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\mul256.r90</file>
+            <file>$PROJ_DIR$\Debug\Obj\ecc_tests.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\crypto_tests.r90</file>
+            <file>$TOOLKIT_DIR$\inc\clib\stddef.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\crypto_tests.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\ecc_tests.r90</file>
+            <file>$PROJ_DIR$\Debug\Obj\eccp2_no_endo.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\kex.r90</file>
+            <file>$PROJ_DIR$\Debug\Obj\schnorrq.r90</file>
+            <file>$PROJ_DIR$\Debug\Obj\mul64.r90</file>
+            <file>$PROJ_DIR$\Debug\Obj\random.r90</file>
+            <file>$PROJ_DIR$\Debug\Obj\fpadd1271.r90</file>
+            <file>$PROJ_DIR$\Debug\Obj\fpzero1271.r90</file>
+            <file>$PROJ_DIR$\Debug\Obj\fpneg1271.r90</file>
+            <file>$PROJ_DIR$\Debug\Obj\fpcopy1271_flash.r90</file>
+            <file>$PROJ_DIR$\Debug\Obj\mod_mul_dbl128.r90</file>
+            <file>$TOOLKIT_DIR$\inc\clib\string.h</file>
+            <file>$PROJ_DIR$\..\src\AVR\fpneg1271.s</file>
+            <file>$PROJ_DIR$\..\src\AVR\fpsub1271.s</file>
+            <file>$PROJ_DIR$\..\src\AVR\fpadd1271.s</file>
+            <file>$PROJ_DIR$\..\src\AVR\fpcopy1271.s</file>
+            <file>$PROJ_DIR$\..\src\AVR\fpcopy1271_flash.s</file>
+            <file>$PROJ_DIR$\..\src\AVR\fp.h</file>
+            <file>$PROJ_DIR$\..\src\Dronecrypt_Tables.h</file>
+        </outputs>
+        <file>
+            <name>[ROOT_NODE]</name>
+            <outputs>
+                <tool>
+                    <name>XLINK</name>
+                    <file> 78 10</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\tests\test_extras.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 20</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 84</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 5</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 57 38 37 69 48 15 16 6 109 72</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 38 72 15 48 109 69 16 57 37 6</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\AVR\mod_mul_dbl128.S</name>
+            <outputs>
+                <tool>
+                    <name>AAVR</name>
+                    <file> 108</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\AVR\fpzero1271.s</name>
+            <outputs>
+                <tool>
+                    <name>AAVR</name>
+                    <file> 105</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\tests\crypto_tests.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 95</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 79</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 97</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 38 37 69 52 57 48 15 16 6</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 57 48 52 15 69 38 6 37 16</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\crypto_util.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 14</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 64</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 22</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 57 38 37 69 52 109 16</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 38 109 37 52 69 57 16</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\AVR\mp_add.s</name>
+            <outputs>
+                <tool>
+                    <name>AAVR</name>
+                    <file> 90</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\AVR\mp_sub.s</name>
+            <outputs>
+                <tool>
+                    <name>AAVR</name>
+                    <file> 7</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\random\random.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 103</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 21</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 88</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 57 38 37 69 45 72 16</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 72 16 45 38 37 57 69</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\tests\ecc_tests.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 98</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 94</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 17</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 57 38 37 69 52 48 15 16 6</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 69 48 52 15 57 6 38 37 16</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\eccp2.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 71 9 32</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 18</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 29</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 57 38 37 69 52 76 96 16 72 91 109 115 67</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 37 16 76 38 52 115 72 109 57 69 96 91 67</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\AVR\mod_mul128.S</name>
+            <outputs>
+                <tool>
+                    <name>AAVR</name>
+                    <file> 8</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\tests\fp_tests.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 87</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 2</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 11</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 57 38 37 69 48 15 16 6</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 15 48 69 6 57 38 37 16</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\eccp2_no_endo.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 19</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 92</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 99</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 57 38 37 69</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 38 69 37 57</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\blake2b\blake.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 12</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 13</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 85</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 96 16 109 30 54 62 35 69</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 62 16 30 96 109 54 69 35</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\Dronecrypt.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 28</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 0</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 1</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 57 38 37 69 52 45 54 72 16 109 34 116 91 96</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 37 116 38 54 52 109 16 96 57 45 72 34 69 91</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\AVR\mul32.S</name>
+            <outputs>
+                <tool>
+                    <name>AAVR</name>
+                    <file> 66</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\AVR\mod1271.s</name>
+            <outputs>
+                <tool>
+                    <name>AAVR</name>
+                    <file> 31</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\AVR\mul256.S</name>
+            <outputs>
+                <tool>
+                    <name>AAVR</name>
+                    <file> 93</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\AVR\mod_sqr128.S</name>
+            <outputs>
+                <tool>
+                    <name>AAVR</name>
+                    <file> 4</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\AVR\mul64.S</name>
+            <outputs>
+                <tool>
+                    <name>AAVR</name>
+                    <file> 102</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\tests\dronecrypt_tests.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 26</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 27</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 70</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 38 37 69 34 52 57 48 15 16 6</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 57 15 37 52 69 38 34 48 6 16</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\kex.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 100</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 23</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 89</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 57 38 37 69 52 45 109 16</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 69 45 52 109 38 57 37 16</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\schnorrq.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 101</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 65</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 3</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 57 38 37 69 52 45 54 72 16 109</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 72 45 16 52 54 109 38 37 57 69</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\main.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 83</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 86</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 24</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCAVR</name>
+                    <file> 37 69</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 69 37</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\Debug\Exe\microFourQ_AVR.d90</name>
+            <outputs>
+                <tool>
+                    <name>XLINK</name>
+                    <file> 10</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>XLINK</name>
+                    <file> 80 81 12 95 14 28 26 98 32 19 87 104 75 107 106 74 105 100 83 31 8 108 4 90 7 93 66 102 103 101 20 82</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\AVR\fpneg1271.s</name>
+            <outputs>
+                <tool>
+                    <name>AAVR</name>
+                    <file> 106</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\AVR\fpsub1271.s</name>
+            <outputs>
+                <tool>
+                    <name>AAVR</name>
+                    <file> 74</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\AVR\fpadd1271.s</name>
+            <outputs>
+                <tool>
+                    <name>AAVR</name>
+                    <file> 104</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\AVR\fpcopy1271.s</name>
+            <outputs>
+                <tool>
+                    <name>AAVR</name>
+                    <file> 75</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\AVR\fpcopy1271_flash.s</name>
+            <outputs>
+                <tool>
+                    <name>AAVR</name>
+                    <file> 107</file>
+                </tool>
+            </outputs>
+        </file>
+        <forcedrebuild>
+            <name>$PROJ_DIR$\..\src\eccp2.c</name>
+            <tool>C-STAT</tool>
+        </forcedrebuild>
+        <forcedrebuild>
+            <name>$PROJ_DIR$\..\src\blake2b\blake.c</name>
+            <tool>C-STAT</tool>
+        </forcedrebuild>
+    </configuration>
+    <configuration>
+        <name>Release</name>
+        <outputs />
+        <forcedrebuild>
+            <name>[MULTI_TOOL]</name>
+            <tool>XLINK</tool>
+        </forcedrebuild>
+    </configuration>
+</project>
