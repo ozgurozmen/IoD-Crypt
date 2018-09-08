@@ -17,6 +17,8 @@ Open the project file [`microFourQ_AVR.eww`](iar-ide/microFourQ_AVR.eww) and cli
 
 Project settings can be accessed and modified by going to `Project > Options...`. 
 
+Note: To run these files on ATmega2560, cfgm2560.xcl file should be updated such that: -D_..X_SRAM_BASE=5000 and -D_..X_SRAM_END=6FFF. Otherwise, from the options you can change the target processor to ATxmega256A3.
+
 ## License
    
 These codes and microFourQ are licensed under the MIT License; see [`License_microFourQ.txt`](License_microFourQ.txt) for details.
