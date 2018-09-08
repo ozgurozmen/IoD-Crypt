@@ -4,7 +4,7 @@ These codes are based on microFourQ library (https://github.com/geovandro/microF
 
 Various public key optimization techniques are harnessed to offer a light-weight framework for Internet of Drones. Dronecrypt.c Dronecrypt.h files include key exchange, digital signature and public key encryption algorithms to offer a full framework.
 
-### IMPORTANT SECURITY NOTE from https://github.com/geovandro/microFourQ-AVR
+### IMPORTANT SECURITY NOTE
 
 Random values are generated with `rand()`. This is NOT a cryptographically secure function.
 Users should replace this function with a cryptographically-secure PRNG (see [`random.c`](src/random/random.c)) .
