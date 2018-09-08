@@ -1,23 +1,8 @@
-# FourQlib v3.0 (C Edition): 
-# Optimized implementation for 32-bit ARM and ARM Cortex-M4
+# Dronecrypt on 32-bit ARM
 
-## Contents
+These codes are based on FourQ library (https://github.com/Microsoft/FourQlib).
 
-The `FourQ_ARM` folder contains:
-
-* [`FourQ_ARM/makefile`](makefile): Makefile for compilation on ARM processors (ARMv6 and ARMv7) using GNU GCC on Linux.
-* [`FourQ_ARM/makefile_Cortex-M4`](makefile_Cortex-M4): Makefile for compilation on ARM Cortex-M4 (STM32F4xx series) using GNU GCC on Linux.
-* Main .c and .h files: library and header files. Public API for ECC scalar multiplication, key exchange and signatures is in [`FourQ_ARM/FourQ_api.h`](FourQ_api.h).        
-* [`FourQ_ARM/ARM/`](ARM/): folder with library files implementing low-level arithmetic for ARM.
-* [`FourQ_ARM/libopencm3/`](libopencm3/): folder with firmware library files for ARM Cortex-M microcontrollers.
-* [`FourQ_ARM/random/`](random/): folder with pseudo-random generation function for ARM Cortex-M4.
-* [`FourQ_ARM/tests/`](tests/): test files for 32-bit ARM.
-* [`FourQ_ARM/tests_Cortex-M4/`](tests_Cortex-M4/): test files for ARM Cortex-M4.
-* [`FourQ_ARM/README.md`](README.md): this readme file.
-
-`stm32f4_wrapper.c` and `stm32f4_wrapper.h` are by Joost Rijneveld and can be found [`here`](https://github.com/joostrijneveld/STM32-getting-started).
-
-Files in the [`libopencm3`](libopencm3/) folder are from the [libopencm3 project](https://github.com/libopencm3/libopencm3).
+Various public key optimization techniques are harnessed to offer a light-weight framework for Internet of Drones. Dronecrypt.c Dronecrypt.h files include key exchange, digital signature and public key encryption algorithms to offer a full framework.
 
 ## Supported platforms
 
@@ -30,15 +15,6 @@ This implementation is supported on ARM platforms and includes two variants:
 
 See instructions below to choose an implementation option and compile on one of the supported platforms.
 
-## Complementary crypto functions
-
-Random values are generated with `/dev/urandom` in the case of the 32-bit ARM implementation, and with the function
-`random_int()` in the case of the ARM Cortex-M4 implementation.
-  
-The library includes an implementation of SHA-512 which is used by default by SchnorrQ signatures.
-
-Users can experiment with different options by replacing functions in the `random`, `FourQ_ARM/random` and `sha512` folders and applying the corresponding changes to the settings in [`FourQ.h`](FourQ.h). 
-
 ## Instructions
 
 ### Building the library for ARMv6 or ARMv7
@@ -50,7 +26,7 @@ command prompt:
 $ make CC=[gcc/clang] USE_ENDO=[TRUE/FALSE] EXTENDED_SET=[TRUE/FALSE] CACHE_MEM=[TRUE/FALSE]
 ```
 
-After compilation, run `fp_tests`, `ecc_tests` or `crypto_tests`.
+After compilation, run `dronecrypt_tests`.
 
 By default GNU GCC is used, as well as endomorphisms and extended settings. Similarly, `CACHE_MEM=TRUE` is set
 by default indicating that the targeted platform contains a cache memory.
@@ -70,6 +46,8 @@ $ make CC=clang
 By default `EXTENDED_SET` is enabled, which sets the following compilation flags: `-fwrapv -fomit-frame-pointer 
 -funroll-loops`. To disable this, use `EXTENDED_SET=FALSE`.
 Users are encouraged to experiment with the different flag options.
+
+Note: The code is not tested ARMv6 or ARMv7 architecture
 
 ### Building the library for Cortex-M4 on the STM32F4DISCOVERY board
 
@@ -117,9 +95,7 @@ From a different terminal window on the server machine, program the device with 
 from the `FourQ_ARM` folder:
 
 ```sh 
-$ st-flash write tests_Cortex-M4/fp_tests.bin 0x8000000
-$ st-flash write tests_Cortex-M4/ecc_tests.bin 0x8000000
-$ st-flash write tests_Cortex-M4/crypto_tests.bin 0x8000000
+$ st-flash write tests_Cortex-M4/dronecrypt_tests.bin 0x8000000
 ```
 
 The tests should begin to run on the first terminal window.
