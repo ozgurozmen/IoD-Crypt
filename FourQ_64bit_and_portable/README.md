@@ -1,21 +1,8 @@
-# FourQlib v3.0 (C Edition): portable and 64-bit optimized implementation
+# Dronecrypt on 64-bit processors
 
-## Contents
+These codes are based on FourQ library (https://github.com/Microsoft/FourQlib).
 
-The `FourQ_64bit_and_portable` folder contains:
-
-* [`FourQ_64bit_and_portable/Visual Studio/`](Visual%20Studio/): folder with Visual Studio 2015 solution and 
-project files for compilation and testing in Windows.
-* [`FourQ_64bit_and_portable/makefile`](makefile): Makefile for compilation using GNU GCC or clang compilers 
-on Linux. 
-* Main .c and .h files: library and header files. Public API for ECC scalar multiplication, key exchange and signatures is in 
-[`FourQ_64bit_and_portable/FourQ_api.h`](FourQ_api.h).        
-* [`FourQ_64bit_and_portable/AMD64/`](AMD64/): folder with library files for optimized x64 implementation.
-* [`FourQ_64bit_and_portable/ARM64/`](ARM64/): folder with library files for optimized 64-bit ARM 
-implementation.
-* [`FourQ_64bit_and_portable/generic/`](generic/): folder with library files for portable implementation.
-* [`FourQ_64bit_and_portable/tests/`](tests/): test files.
-* [`FourQ_64bit_and_portable/README.md`](README.md): this readme file.
+Various public key optimization techniques are harnessed to offer a light-weight framework for Internet of Drones. Dronecrypt.c Dronecrypt.h files include key exchange, digital signature and public key encryption algorithms to offer a full framework.
 
 ## Supported platforms
 
@@ -24,15 +11,6 @@ running Windows or Linux. We have tested the library with Microsoft Visual Studi
 clang v3.8. 
 
 See instructions below to choose an implementation option and compile on one of the supported platforms. 
-
-## Complementary crypto functions
-
-Random values are generated with `/dev/urandom` in the case of Linux, and with the function `BCryptGenRandom()` in the case of Windows.
-
-The library includes an implementation of SHA-512 which is used by default by SchnorrQ signatures.
-
-Users can experiment with different options by replacing functions in the `random` and `sha512` folders and 
-applying the corresponding changes to the settings in [`FourQ.h`](FourQ.h). 
 
 ## Implementation options
 
@@ -48,32 +26,6 @@ The following compilation options are available for the `FourQ_64bit_and_portabl
 
 Follow the instructions below to configure these different options.
 
-## Instructions for Windows
-
-### Building the library with Visual Studio
-
-Open the solution file ([`FourQ.sln`](Visual%20Studio/FourQ/FourQ.sln)) in Visual Studio 2015, select 
-one of the available configurations from
-the Solution Configurations menu ("Release" corresponding to the high-speed x64 implementation and "Generic" 
-corresponding to the portable implementation) and select one of the Solution Platforms (x64 or Win32). Note 
-that Win32 is only supported with the "Generic" solution configuration.
-
-By default, `USE_ENDO=true` and (for x64) `_AVX_` is defined. To modify this configuration, go to the property 
-window of the FourQ project, go to `Configuration Properties > C/C++ > Preprocessor`. Make any suitable changes, 
-e.g., delete `_AVX_` if AVX instructions are not supported, replace `_AVX_` by `_AVX2_` if AVX2 instructions
-are supported, or set `USE_ENDO=true` or `false`. Repeat these steps for the `fp_tests`, `ecc_tests` and `crypto_tests` projects.
-
-Finally, select "Build Solution" from the "Build" menu. 
-
-### Running the tests
-
-After building the solution, run `fp_tests.exe`, `ecc_tests.exe` and `crypto_tests.exe`.
-
-### Using the library
-
-After building the solution, add the `FourQ.lib` file to the set of References for a project, and add 
-[`FourQ.h`](FourQ.h) and [`FourQ_api.h`](FourQ_api.h) to the list of header files of a project.
-
 ## Instructions for Linux
 
 ### Building the library and executing the tests with GNU GCC or clang
@@ -86,7 +38,7 @@ $ make ARCH=[x64/x86/ARM/ARM64] CC=[gcc/clang] ASM=[TRUE/FALSE] AVX=[TRUE/FALSE]
      EXTENDED_SET=[TRUE/FALSE] USE_ENDO=[TRUE/FALSE] GENERIC=[TRUE/FALSE] SERIAL_PUSH=[TRUE/FALSE] 
 ```
 
-After compilation, run `fp_tests`, `ecc_tests` or `crypto_tests`.
+After compilation, run `dronecrypt_tests`.
 
 By default GNU GCC is used, as well as the endomorphisms and the extended settings.
 
