@@ -88,6 +88,7 @@ RX  -> PA2
 Then, run from the server machine:
 
 ```sh 
+$ sudo chmod + x /tests_Cortex-M4/monitor.sh
 $ sudo ./tests_Cortex-M4/monitor.sh
 ```
 
